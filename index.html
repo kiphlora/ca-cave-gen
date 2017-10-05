@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CA Cave Generation</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Dosis:200" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/project-theme.css">
+	<link rel="stylesheet" type="text/css" href="css/page-style.css">
+
+	<script type="text/javascript" async
+	  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+
+	<script src="js/d3/d3.min.js"></script>
+	<script src="js/util.js"></script>
+	
+</head>
+<body>
+  <div class="container">
+		<header class="hero-header">
+			<div class="my-name">CA Cave Generation</div>
+			<div class="nav">
+				<a href="about/index.html"><div class="about-nav">About CG</div></a>
+				<a href="kiphlora.com"><div class="portfolio-nav">Return to Kiphlora</div></a>
+			</div>
+		</header>
+
+		<div class="hero-content-wrapper">
+			<div class="intro-content">
+				<h3>
+					Procedural Generation
+				</h3>
+				<p>
+					A lot of games employ procedural content generation techniques and algorithms to create content quickly. One such technique is using <span class="notes">Cellular Automata</span> to generate caves.
+				</p>
+				<p>
+					Caves are natural systems that have been carved, over long periods of time, by water. In order to emulate the look of natural caves, we are going to use a form of artificial life known as Cellular Automata to help us form them.
+				</p>
+				<p>
+					What are Cellular Automata? See one of my <a href="kiphlora.com/social-cells">earlier projects</a> to get a feel for Elementary Cellular Automata. The Cellular Automata we will use in generating caves will be 2-dimensional.
+				</p>
+				<h3>
+					2-D Cellular Automata
+				</h3>
+				<p>
+					We're going to use 2-D Cellular Automata to create our caves. We will use a grid of them. The grid will have all cells turned off at first. It looks like this:
+				</p>
+				<div id="all-off-grid">
+					<iframe src="all-off-grid.html" frameborder="0"></iframe>
+				</div>
+				<p>
+					Next, we'll flip on each cell using a certain probability. This will give us our <span class="notes">random seeds</span> from which we'll generate our cave.
+				</p>
+				<p>
+					Try adjusting the probability to see how it affects the number of seeds on the board. Use the slider to adjust the probability between 0 and 1. 0 means there's a 0% chance that a cell will be in the "on" state; 1 means there's a 100% chance that a cell will be in the "on" state. Use the "Refresh" button to change the random seeds.
+				</p>
+				<div id="random-seeds">
+					<iframe src="random-seeds.html" frameborder="0"></iframe>
+				</div>
+				<p>
+					Next we'll set a <span class="notes">majority rule</span> that tells cells to alter their state based on what the majority of their neighboring cells' states are.
+				</p>
+				<p>
+					We're using a Moore neighborhood, which means that a cell (a single square on the grid) has 8 neighbors that surround it. Here's a picture of a Moore neighborhood:
+				</p>
+				<div id="moore-neighborhood">
+					<iframe src="moore-neighborhood.html" frameborder="0"></iframe>
+				</div>
+				<p>
+					Specifically, we're going to use the following rule: <span class="notes">If 4 or more of the cells neighbors are in the "on" state, then this cell should flip "on". Otherwise, this cell should flip "off".</span> By repeatedly using this for rule on all cells on the grid, we'll generate some cave-like structures.
+				</p>
+				<div id="run-rule">
+					<iframe src="run-rule.html" frameborder="0"></iframe>
+				</div>
+				<p>
+					Click "Reset" to generate new random seeds. Use the slider to change the random seed probability. Click "Use Rule" to run the rule. Click it multiple times to see the CA in action, gradually forming the cave structures.
+				</p>
+				
+				<p>
+					As you can see, there are some issues with this cave generation. Chief among them being that there are many smaller caverns that don't necessarily connect with other caverns. There are a couple ways to handle this:
+				</p>
+				<ol>
+					<li>Playing around with the rules and probabilities until you get something you like.</li>
+					<li>Write some functions to make alterations to the caves.</li>
+					<li>Run the CA and then edit the results by hand.</li>
+				</ol>
+				<p>
+					All three work well. It all depends on what you need. The first might take a really long time to figure out, but could be fun since you'd be exploring what different rules and probabilities produce. You could probably also search for good rule sets instead, saving you plenty of time and effort.
+					The second one is often necessary when the game/system generates the entire level on its own. This is common for roguelike games, where random level generation happens on-the-fly, with little or no human intervention.
+					The last one is what we'll look at today. It's great for helping create interesting ideas quickly and then allowing human designers add the finer touches.
+				</p>
+				<p>
+					In case you're interested in altering the rules, you'll find the rule interface below. It looks like a table. There are two rows and each row has the numbers 0 - 8 listed in the blocks. If a block on the top row is filled-in, it means that the cell will be flipped "off" if there are that many neighbors in the "on" state. If a block is filled-in on the bottom row, then the cell will be flipped "on" if that many neighbors are "on".
+				</p>
+				<p>
+					Let's take a look at the default settings:
+					Our rule said, <span class="notes">If 4 or more of the cells neighbors are in the "on" state, then this cell should flip "on". Otherwise, this cell should flip "off".</span> This means that if the number of neighbors that are "on" are 4, 5, 6, 7, or 8, then this cell should flip "on". But, if there are 0, 1, 2, or 3 neighbors in the "on" state, then this cell flips "off".
+				</p>
+				<p>
+					Take a look at the interface, along with the Moore neighborhood. Click on the neighbors to change their states. Flip any 4 of them "on" and see what happens to the center cell. Keep trying different combinations until you get a feel for how the rule works.
+				</p>
+				<div id="moore-plus-rules">
+					<iframe src="moore-plus-rules.html" frameborder="0"></iframe>
+				</div>
+				<p>
+					Now, let's put all of it together. 
+					Use the following to create a level you like.
+					Employ CA, with their random seeds and rules, to create something that looks cave-like. Then, go ahead and click and drag to change the cells between "on" and "off" states. You can even change the rule in-between, allowing you to create all kinds of interesting caves.
+				</p>
+				<div id="make-own-level">
+					<iframe src="make-own-level.html" frameborder="0"></iframe>
+				</div>
+				<p>
+					Thanks for reading! If you're interested in using Cellular Automata to generate more levels, or if you want to spice up my code in your own way, take a look at my GitHub page. Also, in case you worked really hard to create something special and want to save it, you can save a .txt file containing the level information. Check out my functions on GitHub to open it for your own purposes. Enjoy!
+				</p>
+				
+			</div>
+		</div>
+		<footer class="hero-footer">
+			<div class="footer-info">
+			<a href="https://github.com/kiphlora/"><div>github.com/kiphlora</div></a>
+			<a href="mailto:kiphlora@gmail.com" target="_top"><div>kiphlora@gmail.com</div></a>
+			<p>&copy 2017 Brett Moran</p>
+		</div>
+		</footer>
+  </div>
+
+
+  <script>
+		
+  </script>
+
+</body>
+</html>

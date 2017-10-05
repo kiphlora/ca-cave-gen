@@ -1,0 +1,4 @@
+2^512 number gathered from https://en.wikipedia.org/wiki/Power_of_two#Powers_of_two_whose_exponents_are_powers_of_two
+
+
+Possible source for the s^{s^{(2n+1)^{d}}} formula can be found on page 213 of http://www.stephenwolfram.com/publications/cellular-automata-complexity/pdfs/two-dimensional-cellular-automata.pdf since the final number of possible rules is 2^512, which results from s = 2, n = 1, d = 2: 2^{2^{3^{2}}}...
