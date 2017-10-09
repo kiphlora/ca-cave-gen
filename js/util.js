@@ -6,12 +6,81 @@ function sum(arr) {
 	return s;
 }
 
+
 function vecOp(arr, f) {
 	var a = [];
 	for (var i=0; i<arr.length; i++) {
 		a[i] = f(arr[i], i);
 	}
 	return a;
+}
+
+function rbinom(prob) {
+	if (prob === undefined) prob = 0.5;
+	var u = randReal(0,1);
+	var b = u >= prob ? 0 : 1;
+	return b;
+}
+
+function applyFun(arr, fun) {
+	var a = [];
+	for (var i=0; i<arr.length; i++) {
+		var d = arr[i];
+		a[i] = fun(d, i);
+	}
+	return a;
+}
+
+function clamp(value, min, max) {
+	return Math.max(min, Math.min(value, max));
+}
+
+function clampAll(arr, min, max) {
+	return applyFun(arr, function(d,i){ return clamp(d, min, max); });
+}
+
+/*
+	matrix
+
+	@params:
+		f: a function with signature 
+			 function f(row_index, col_index){}
+			 
+			 OR
+
+			 a non-function value that will be repeated over each cell
+
+		nrow: number of rows
+		ncol: number of columns
+
+	@return:
+		a matrix
+*/
+function matrix(f, nrow, ncol) {
+	var mat = [];
+	for (var r=0; r<nrow; r++) {
+		var row = [];
+		for (var c=0; c<ncol; c++) {
+			var val = null;
+			if(isFunction(f)) {
+				val = f(r,c);
+			}
+			else {
+				val = f;
+			}
+			row[c] = val;
+		}
+		mat[r] = row;
+	}
+	return mat;
+}
+
+
+/*
+	Found here: https://stackoverflow.com/questions/5999998/how-can-i-check-if-a-javascript-variable-is-function-type
+*/
+function isFunction(x) {
+  return Object.prototype.toString.call(x) == '[object Function]';
 }
 
 function quickMap(arr, key) {
@@ -75,6 +144,81 @@ function replicate(value, ntimes) {
 	for (var i=0; i<ntimes; i++) {
 		a[i] = value;
 	}
+	return a;
+}
+
+/*
+	buildArray
+
+	@params:
+		f: a function with signature
+			 function f(index){}
+
+			 OR
+
+			 a non-function value to be replicated over all cells
+
+		len: the length of the array
+
+	@return: an array
+*/
+function buildArray(f, len) {
+	var a = [];
+	for (var i=0; i<len; i++) {
+		var val = null;
+		if (isFunction(f)) val = f(i);
+		else val = f;
+		a[i] = val;
+	}
+
+	return a;
+}
+
+function vector(f, len) {
+	var a = [];
+	for (var i=0; i<len; i++) {
+		var val = null;
+		if (isFunction(f)) val = f(i);
+		else val = f;
+		a[i] = val;
+	}
+
+	return a;
+}
+
+function seq(start, stop) {
+	var start = Math.min(start, stop);
+	var stop = Math.max(start, stop);
+
+	var diff = stop - start + 1;
+	var seqRange = range(diff);
+
+	var addStart = function(d,i){ return d + start; };
+
+	var newrange = applyFun(seqRange, addStart);
+
+	return newrange;
+}
+
+function range() {
+	var n = 0;
+	var a = [];
+
+	if (arguments.length === 1) {
+		n = Math.floor(arguments[0]);
+		a = buildArray(function(i){ return i; }, n);
+	}
+	else if (arguments.length === 2) {
+		var s0 = Math.floor(arguments[0]);
+		var s1 = Math.floor(arguments[1]);
+
+		var start = Math.min(s0, s1);
+		var stop = Math.max(s0, s1);
+
+		n = stop - start + 1;
+		a = buildArray(function(i){ return i + start; }, n);
+	}
+
 	return a;
 }
 
@@ -271,3 +415,46 @@ function endall(transition, callback) {
 
 // example of use
 // d3.selectAll("g").transition().call(endall, function() { console.log("all done") });
+
+
+/*
+	LogSlider code borrowed from user sth's answer at: https://stackoverflow.com/questions/846221/logarithmic-slider
+*/
+function LogSlider(options) {
+   options = options || {};
+   this.minpos = options.minpos || 0;
+   this.maxpos = options.maxpos || 100;
+   this.minlval = Math.log(options.minval || 1);
+   this.maxlval = Math.log(options.maxval || 100000);
+
+   this.scale = (this.maxlval - this.minlval) / (this.maxpos - this.minpos);
+}
+
+LogSlider.prototype = {
+   // Calculate value from a slider position
+   value: function(position) {
+      return Math.exp((position - this.minpos) * this.scale + this.minlval);
+   },
+   // Calculate slider position from a value
+   position: function(value) {
+      return this.minpos + (Math.log(value) - this.minlval) / this.scale;
+   }
+};
+// end of LogSlider code
+
+/* 
+	Using the LogSlider
+
+var logsl = new LogSlider({maxpos: 20, minval: 100, maxval: 1000000});
+
+
+var tooltip = d3.select("#n-points").text(n);
+
+var slider = d3.select("#npoints-slider");
+slider.node().value = logsl.position(n);
+slider.on("input", function(){
+	var tooltip = d3.select(".slider").select(".tooltip");
+	n = parseInt(logsl.value(this.value).toFixed(0)); # pass the slider's real value into the logscale.value function
+	tooltip.select("#n-points").text(n);
+})
+*/
