@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CA Grid - All Cells Off</title>
+
+	<script src="../js/d3/d3.min.js"></script>
+	<script src="../js/util.js"></script>
+	<script src="../js/ca-cave.js"></script>
+	
+	<link rel="stylesheet" href="../css/mini-style.css">
+
+</head>
+<body>
+	<div id="container">
+		<div class="controls">
+			<h3>Controls</h3>
+			<div class="slider-controls">
+				<button>Wall probability: <span id="on-prob"></span></button>
+				<input id="on-prob-slider" type="range" min="0" max="1" step="0.01" value="0.50"/>	
+			</div>
+			<button class="randomize-walls">Randomize Walls</button>
+			<button class="apply-rule">Apply Rule</button>
+		</div>
+	</div>
+		
+	<script>
+
+			var nrows = 100;
+			var ncols = 100;
+			var stateColors = ["#fff", "#333"];
+			var strokeColor = "#333";
+			var strokeWidth = 0.2;
+
+			var graphicsType = "canvas";
+
+			width = 920;
+			height = 500;
+			margin = 0;
+			var div = d3.select("#container");
+
+			var canvas = div.append("canvas")
+					.attr("class", "ca-cave")
+					.attr("width", height + 2 * margin)
+					.attr("height", height + 2 * margin);
+
+			var context = canvas.node().getContext("2d");
+
+			var xscale = d3.scaleBand()
+				.domain(range(nrows))
+				.rangeRound([0, height])
+				.paddingInner(0.0);
+
+			var yscale = d3.scaleBand()
+				.domain(range(ncols))
+				.rangeRound([0, height])
+				.paddingInner(0.0);
+
+
+			var slider = d3.select("#on-prob-slider");
+			var sliderControls = d3.select(".controls").select(".slider-controls");
+
+			var prob = slider.node().value;
+
+			sliderControls.select("#on-prob").text(prob);
+			
+			slider.on("input", function(){
+				var p = parseFloat(this.value);
+				sliderControls.select("#on-prob").text(p.toFixed(2));
+			});
+
+			slider.on("change", function(){
+				var p = this.value;
+				prob = p;
+				// randomizeCells();
+				// drawCells(graphicsType);
+			});
+
+			var randomizeWallsButton = d3.select(".randomize-walls")
+				.on("click", function(){
+					randomizeCells();
+					drawCells(graphicsType);
+				});
+
+			var applyRulesButton = d3.select(".apply-rule")
+				.on("click", function(){
+					updateStep(graphicsType);
+				});
+
+			var cells = matrix(createCellCanvas, nrows, ncols);
+			randomizeCells();
+			drawCells(graphicsType);
+
+			
+
+
+	</script>
+</body>
+</html>		

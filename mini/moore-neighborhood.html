@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CA Grid - All Cells Off</title>
+
+	<script src="../js/d3/d3.min.js"></script>
+	<script src="../js/util.js"></script>
+	<script src="../js/ca-cave.js"></script>
+	<link rel="stylesheet" href="../css/mini-style.css">
+	
+</head>
+<body>
+	<div id="container">
+
+			
+
+		<div class="controls">
+			<div class="detailed-overlay">
+				<h3>Cell (<span class="cell-row"></span>, <span class="cell-column"></span>) Info</h3>
+				<div>
+					<div class="svg-div">
+						<svg class="my-moore-neighborhood"></svg>	
+					</div>
+					<div class="info-div">
+						<!-- <p>Neighbors in Wall state: <span class="wall-sum">4</span></p> -->
+						<p>Current State: <span class="current-state">C</span></p>
+						<p>Next State: <span class="next-state">C</span></p>	
+					</div>
+				</div>
+			</div>
+			<h3>Controls</h3>
+			<div class="slider-controls">
+				<button>Wall probability: <span id="on-prob"></span></button>
+				<input id="on-prob-slider" type="range" min="0" max="1" step="0.01" value="0.50"/>	
+			</div>
+			<button class="randomize-walls">Randomize Walls</button>
+			<button class="apply-rule">Apply Rule</button>
+		</div>
+	</div>
+	
+	
+	
+	<!-- <button class="apply-rule">Apply Rule</button> -->
+	<!-- <div class="rule-buttons"></div> -->
+	
+	<script>
+
+			var nrows = 40;
+			var ncols = 40;
+			var stateColors = ["#fff", "#333"];
+			var strokeColor = "#333";
+			var strokeWidth = 0.2;
+
+			var graphicsType = "svg";
+
+			var allrules = [range(0,8), range(0,8)];
+			allrules[0] = applyFun(allrules[0], function(d,i){
+				return { neighborhoodSum: d, state: d >= 5 ? 1 : 0 };
+			});
+			allrules[1] = applyFun(allrules[1], function(d,i){
+				return { neighborhoodSum: d, state: d >= 4 ? 1 : 0 };
+			});
+
+
+			var mooreOverlay = {};
+			mooreOverlay.row = d3.select(".cell-row");
+			mooreOverlay.col = d3.select(".cell-column");
+
+			mooreOverlay.row.text("row");
+			mooreOverlay.col.text("column");
+
+			mooreOverlay.overlay = d3.select(".detailed-overlay");
+			mooreOverlay.svg = d3.select(".my-moore-neighborhood");
+			// mooreOverlay.walls = d3.select(".wall-sum")
+			mooreOverlay.currentState = d3.select(".current-state");
+			mooreOverlay.currentState.style("opacity", 0);
+
+			mooreOverlay.nextState = d3.select(".next-state");
+			mooreOverlay.nextState.style("opacity", 0);
+
+			mooreOverlay.matrix = matrix(function(r,c){
+				var x = c * 25 + 1;
+				var y = r * 25 + 1;
+				var w = 25;
+				var h = 25;
+
+				var rect = mooreOverlay.svg.append("rect")
+						.attr("x", x)
+						.attr("y", y)
+						.attr("width", w)
+						.attr("height", h)
+						.attr("fill", stateColors[0])
+						.attr("stroke", "#333");
+
+				if (r === 1 && c === 1) {
+					mooreOverlay.svg.append("text")
+						.attr("class", "center-cell-text")
+						.attr("x", x + w / 2)
+						.attr("y", y + h / 2)
+						.attr("dy", "0.35em")
+						.text("C")
+						.attr("text-anchor", "middle")
+						.attr("text-align", "center")
+						.attr("fill", "#333");
+				}
+
+				return rect;
+
+			}, 3, 3);
+
+
+			
+			function updateMooreOverlay(cell) {
+				mooreOverlay.row.text(cell.row);
+				mooreOverlay.col.text(cell.col);
+
+				var nextState = applyRules(cell);
+				mooreOverlay.nextState
+						.style("background-color", stateColors[nextState])
+						.style("color", stateColors[Math.abs(nextState - 1)])
+						.style("opacity", 1);
+
+				mooreOverlay.currentState
+						.style("background-color", stateColors[cell.state])
+						.style("color", stateColors[Math.abs(cell.state - 1)])
+						.style("opacity", 1);
+
+
+				var m = mooreOverlay.matrix[1][1].attr("stroke", "#aaa").attr("fill", stateColors[cell.state]);
+				d3.select(".center-cell-text").attr("fill", stateColors[Math.abs(cell.state - 1)]);
+
+				for (var i=0; i<cell.neighbors.length; i++) {
+					var n = cell.neighbors[i];
+					var nr = n[0];
+					var nc = n[1];
+
+					var mr = nr - cell.row + 1;
+					var mc = nc - cell.col + 1;
+					
+					var m = mooreOverlay.matrix[mr][mc].attr("stroke", "#aaa");
+
+					if (nr >= 0 && nr < nrows && nc >= 0 && nc < ncols) {
+						var nstate = cells[nr][nc].state;
+						m.attr("fill", stateColors[nstate]).attr("stroke", "#aaa");	
+					}
+					else {
+						m.attr("fill", "transparent")
+						 .attr("stroke", "transparent")
+						 // .attr("stroke-dasharray", "5");
+					}
+					
+				}
+			}
+
+
+
+			width = 920;
+			height = 500;
+			margin = 2;
+			var div = d3.select("#container");
+			var svg = div.append("svg")
+					.attr("class", "ca-cave")
+					.attr("width", height + 2 * margin)
+					.attr("height", height + 2 * margin)
+				.append("g")
+					.attr("transform", "translate(" + margin + "," + margin + ")");
+
+			
+
+			var xscale = d3.scaleBand()
+				.domain(range(nrows))
+				.rangeRound([0, height])
+				.paddingInner(0.0);
+
+			var yscale = d3.scaleBand()
+				.domain(range(ncols))
+				.rangeRound([0, height])
+				.paddingInner(0.0);
+
+
+
+			var slider = d3.select("#on-prob-slider");
+			var sliderControls = d3.select(".controls").select(".slider-controls");
+
+			var prob = slider.node().value;
+
+			sliderControls.select("#on-prob").text(prob);
+			
+			slider.on("input", function(){
+				var p = parseFloat(this.value);
+				sliderControls.select("#on-prob").text(p.toFixed(2));
+			});
+
+			slider.on("change", function(){
+				var p = this.value;
+				prob = p;
+				// randomizeCells();
+				// drawCells(graphicsType)
+				// overlay = updateOverlaySVG();
+			});
+
+			var randomizeCellsButton = d3.select(".randomize-walls")
+				.on("click", function(){
+					randomizeCells();
+					drawCells(graphicsType);
+					// overlay = updateOverlaySVG();
+				});
+
+			var applyRulesButton = d3.select(".apply-rule")
+				.on("click", function(){
+					updateStep(graphicsType);
+				});
+
+
+			var cells = matrix(createCellSVG, nrows, ncols);
+			randomizeCells();
+			drawCells(graphicsType);
+
+			var overlay = updateOverlaySVG();
+
+			function updateOverlaySVG() {
+				svg.select(".neighborhood-overlay").remove();
+				return svg.append("rect").attr("class", "neighborhood-overlay").style("pointer-events", "none");
+			}
+
+			
+
+	</script>
+</body>
+</html>		

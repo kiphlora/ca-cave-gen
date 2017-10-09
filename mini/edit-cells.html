@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CA Grid - All Cells Off</title>
+
+	<script src="../js/d3/d3.min.js"></script>
+	<script src="../js/util.js"></script>
+	<script src="../js/ca-cave.js"></script>
+	<script src="../js/FileSaver.min.js"></script>
+	
+	<link rel="stylesheet" href="../css/mini-style.css">
+
+	<style>
+		.controls .save-cells {
+			margin-top: 130px;
+		}
+		canvas {
+			cursor: pointer;
+		}
+	</style>
+
+</head>
+<body>
+	<div id="container">
+		<div class="controls">
+			<h3>Controls</h3>
+			<div class="slider-controls">
+				<button>Wall probability: <span id="on-prob"></span></button>
+				<input id="on-prob-slider" type="range" min="0" max="1" step="0.01" value="0.50"/>	
+			</div>
+			<button class="randomize-walls">Randomize Walls</button>
+			<button class="apply-rule">Apply Rule</button>
+			<button class="change-draw-state">Draw</button>
+			<button class="save-cells">Save Cave</button>
+			<input type="file" name="load-cells" id="load-cells" class="file-input" onchange="onChange(event)">
+			<label for="load-cells">Load Cave</label>
+
+		</div>
+	</div>
+		
+	<script>
+
+			// change font-family of file input label to match the rest of the buttons
+			var buttonFontFamily = d3.select(".save-cells").style("font-family");
+			d3.select("label").style("font-family", buttonFontFamily);
+
+      // handle upload button
+			// code modified from: http://bl.ocks.org/syntagmatic/3299303
+			function onChange(e) {
+				var reader = new FileReader();
+				console.log(e);
+				var file = e.target.files[0];
+				console.log(file);
+				reader.readAsText(file);
+
+				reader.onload = function(ev){
+					var filecontents = ev.target.result;
+					var s = JSON.parse(filecontents);
+					console.log(s);
+					s = s.states;
+					cells = matrix(function(r,c){
+						var cell = cells[r][c];
+						cell.state = parseInt(s[r][c]);
+						return cell;
+					}, nrows, ncols);
+					drawCells("canvas");
+				};
+			}
+
+					// console.log(e);
+					// var file = e.target.files[0];
+					// console.log(file);
+					// d3.json(file.name, function(error, data){
+					// 	console.log(error);
+					// 	console.log(data);
+					// })
+					
+					// d3.json("../data/my-cave-4.json", function(error, data){
+					// 	console.log(error);
+					// 	console.log(data);
+					// 	var s = data.states;
+					// 	cells = matrix(function(r,c){
+					// 		var cell = cells[r][c];
+					// 		cell.state = parseInt(s[r][c]);
+					// 		return cell;
+					// 	}, nrows, ncols);
+					// 	drawCells("canvas");
+					// });
+				// }
+
+			saveButton = d3.select(".save-cells")
+				.on("click", function(){
+
+					var alllocs = [];
+					var allstates = [];
+
+					var matrixStrings = applyFun(cells, function(d,i){
+						var locs = [];
+						var states = [];
+
+						for (var i=0; i<d.length; i++) {
+							// locs.push([d[i].row, d[i].col]);
+							states.push(d[i].state);
+						}
+						
+						// alllocs.push(locs);
+						allstates.push(states);
+
+					});
+					var info = { states: allstates };
+
+					var matrixStrings = JSON.stringify(info);
+					var blob = new Blob([matrixStrings], {type: "text/json;charset=utf-8"});
+    			saveAs(blob, "my-cave.json");
+				})
+
+			var nrows = 100;
+			var ncols = 100;
+			var stateColors = ["#fff", "#333"];
+			var textColors = ["#333", "#fff"];
+			var strokeColor = "#333";
+			var strokeWidth = 0.2;
+
+			var graphicsType = "canvas";
+
+			width = 920;
+			height = 500;
+			margin = 0;
+			var div = d3.select("#container");
+
+			var canvas = div.append("canvas")
+					.attr("class", "ca-cave")
+					.attr("width", height + 2 * margin)
+					.attr("height", height + 2 * margin);
+
+			var context = canvas.node().getContext("2d");
+
+			var xscale = d3.scaleBand()
+				.domain(range(nrows))
+				.rangeRound([0, height])
+				.paddingInner(0.0);
+
+			var yscale = d3.scaleBand()
+				.domain(range(ncols))
+				.rangeRound([0, height])
+				.paddingInner(0.0);
+
+
+			var slider = d3.select("#on-prob-slider");
+			var sliderControls = d3.select(".controls").select(".slider-controls");
+
+			var prob = slider.node().value;
+
+			sliderControls.select("#on-prob").text(prob);
+			
+			slider.on("input", function(){
+				var p = parseFloat(this.value);
+				sliderControls.select("#on-prob").text(p.toFixed(2));
+			});
+
+			slider.on("change", function(){
+				var p = this.value;
+				prob = p;
+				// randomizeCells();
+				// drawCells(graphicsType);
+			});
+
+			var randomizeWallsButton = d3.select(".randomize-walls")
+				.on("click", function(){
+					randomizeCells();
+					drawCells(graphicsType);
+				});
+
+			var applyRulesButton = d3.select(".apply-rule")
+				.on("click", function(){
+					updateStep(graphicsType);
+				});
+
+			var cells = matrix(createCellCanvas, nrows, ncols);
+			randomizeCells();
+			drawCells(graphicsType);
+
+
+			function mouse2matrix(mouseX, mouseY) {
+				var row = Math.floor(mouseX / xscale.bandwidth());
+				var col = Math.floor(mouseY / yscale.bandwidth());
+				return [row, col];
+			}
+
+			var dragState = 0;
+
+			var changeStateButton = d3.select(".change-draw-state")
+					.style("background-color", stateColors[dragState]).style("color", textColors[dragState]);
+
+
+			changeStateButton
+				.on("click", function(){
+					dragState = Math.abs(dragState - 1);
+					d3.select(this).style("background-color", stateColors[dragState]).style("color", textColors[dragState]);
+				});
+
+			var isdown = false;
+			var mouseCell = null;
+
+			canvas.on("mousedown", function() {
+				drawCells(cells);
+				isdown = true;
+				var mouse = d3.mouse(this);
+				var matrixLoc = mouse2matrix(mouse[0], mouse[1]);
+				var cell = cells[matrixLoc[1]][matrixLoc[0]];
+				cell.state = dragState; //Math.abs(cell.state - 1);
+				// dragState = cell.state;
+				drawCellCanvas(cell);
+				mouseCell = cell;
+			});
+
+			canvas.on("mouseup", function() {
+				isdown = false;
+				drawCells(graphicsType);
+			})
+
+			canvas.on("mousemove", function() {
+				var mouse = d3.mouse(this);
+				var matrixLoc = mouse2matrix(mouse[0], mouse[1]);
+				var cell = cells[matrixLoc[1]][matrixLoc[0]];
+
+				if (isdown) {
+					if (cell === mouseCell) {
+
+					}
+					else {
+						cell.state = dragState;
+						drawCellCanvas(cell);
+						mouseCell = cell;
+					}
+				}
+				else {
+					drawCells(graphicsType);
+				}
+			})
+
+			
+
+
+	</script>
+</body>
+</html>		
