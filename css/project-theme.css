@@ -174,8 +174,11 @@ a:hover, a:active, a:focus {
 .intro-content h3 {
 	color: #999;
 	font-weight: 500;
-	margin-top: 60px;
+	margin-top: 30px;
+	margin-bottom: 10px;
 }
+
+
 
 a:active {
 	color: #999;
