@@ -4,6 +4,194 @@
 		"selected_items":
 		[
 			[
+				"wid",
+				"width"
+			],
+			[
+				"t",
+				"type"
+			],
+			[
+				"s",
+				"slider-controls"
+			],
+			[
+				"co",
+				"console"
+			],
+			[
+				"contr",
+				"controls"
+			],
+			[
+				"curst",
+				"currentState"
+			],
+			[
+				"state",
+				"stateColors"
+			],
+			[
+				"ca",
+				"ca-cave-svg"
+			],
+			[
+				"ov",
+				"overlay_x"
+			],
+			[
+				"svg",
+				"svgoffset_x"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"more",
+				"mooreOverlay"
+			],
+			[
+				"update",
+				"updateMooreOverlay"
+			],
+			[
+				"mo",
+				"mooreOverlay"
+			],
+			[
+				"det",
+				"detailedOverlay"
+			],
+			[
+				"chan",
+				"change-state"
+			],
+			[
+				"st",
+				"strokeStyle"
+			],
+			[
+				"fill",
+				"fillStyle"
+			],
+			[
+				"get",
+				"getNeighborhoodExtent"
+			],
+			[
+				"xb",
+				"xband"
+			],
+			[
+				"neighs",
+				"neighbors"
+			],
+			[
+				"neigh",
+				"neighbor"
+			],
+			[
+				"ne",
+				"neighbors"
+			],
+			[
+				"nei",
+				"neighborhoodSum"
+			],
+			[
+				"nu",
+				"numberOfColumns"
+			],
+			[
+				"upd",
+				"updateAndDrawCells"
+			],
+			[
+				"num",
+				"numberOfRows"
+			],
+			[
+				"numb",
+				"numberOfColumns"
+			],
+			[
+				"getN",
+				"getNeighborhoodWallSum"
+			],
+			[
+				"strow",
+				"strokeWidth"
+			],
+			[
+				"strokw",
+				"stroke-width"
+			],
+			[
+				"neig",
+				"neighbors"
+			],
+			[
+				"point",
+				"pointer-events"
+			],
+			[
+				"over",
+				"overlayX"
+			],
+			[
+				"fil",
+				"fill-opacity"
+			],
+			[
+				"mous",
+				"mouseishere"
+			],
+			[
+				"n",
+				"numberOfColumns"
+			],
+			[
+				"c",
+				"context"
+			],
+			[
+				"ran",
+				"randomizeSeeds"
+			],
+			[
+				"numr",
+				"numberOfRows"
+			],
+			[
+				"ref",
+				"refresh-seeds"
+			],
+			[
+				"val",
+				"validsubcells"
+			],
+			[
+				"vali",
+				"validNeighbors"
+			],
+			[
+				"sc",
+				"strokeColor"
+			],
+			[
+				"draw",
+				"drawCellsCanvas"
+			],
+			[
+				"cellm",
+				"cellmatrix"
+			],
+			[
+				"bu",
+				"buildArray"
+			],
+			[
 				"cart",
 				"cartesian_y"
 			],
@@ -172,10 +360,6 @@
 				"othersPassThrough"
 			],
 			[
-				"get",
-				"getBoundingClientRect"
-			],
-			[
 				"set",
 				"setMagnitude"
 			],
@@ -264,14 +448,6 @@
 				"function"
 			],
 			[
-				"ran",
-				"randNorm"
-			],
-			[
-				"c",
-				"color"
-			],
-			[
 				"sta",
 				"statusData"
 			],
@@ -338,187 +514,43 @@
 			[
 				"to",
 				"toggleXDimension"
-			],
-			[
-				"tr",
-				"true"
-			],
-			[
-				"pl",
-				"plane"
-			],
-			[
-				"con",
-				"controls"
-			],
-			[
-				"a",
-				"ambientLight"
-			],
-			[
-				"plan",
-				"planeGeometry"
-			],
-			[
-				"t",
-				"time"
-			],
-			[
-				"el",
-				"elapsedTime"
-			],
-			[
-				"l",
-				"length"
-			],
-			[
-				"lsyste",
-				"lsystem_move"
-			],
-			[
-				"tra",
-				"transition"
-			],
-			[
-				"hea",
-				"header"
-			],
-			[
-				"op",
-				"opacity"
-			],
-			[
-				"ca",
-				"card-img"
-			],
-			[
-				"s",
-				"shadow"
-			],
-			[
-				"f",
-				"float"
-			],
-			[
-				"inline",
-				"inline-block"
-			],
-			[
-				"te",
-				"text-decoration"
-			],
-			[
-				"font",
-				"font-size"
-			],
-			[
-				"tran",
-				"transitionTime"
-			],
-			[
-				"content",
-				"content-main"
-			],
-			[
-				"ar",
-				"article-title"
-			],
-			[
-				"tex",
-				"text-top"
-			],
-			[
-				"ki-na",
-				"ki-nav-a"
-			],
-			[
-				"bak",
-				"background-size"
-			],
-			[
-				"im",
-				"background-image"
-			],
-			[
-				"k",
-				"ki-nav-td"
-			],
-			[
-				"ki",
-				"ki-nav-col"
-			],
-			[
-				"n",
-				"nimbus-gallery"
-			],
-			[
-				"rang",
-				"rangeRoundBand"
-			],
-			[
-				"list-syt",
-				"list-style-type"
-			],
-			[
-				"cent",
-				"center-column"
-			],
-			[
-				"act",
-				"activateRotation"
-			],
-			[
-				"ch",
-				"checkBuckets"
-			],
-			[
-				"buck",
-				"bucketRotations"
-			],
-			[
-				"bu",
-				"bucketScore"
-			],
-			[
-				"buc",
-				"bucketRotations"
-			],
-			[
-				"add",
-				"additionalRotation"
-			],
-			[
-				"hexr",
-				"hexRotations"
-			],
-			[
-				"sh",
-				"shadowOffsetY"
-			],
-			[
-				"shadowOff",
-				"shadowOffsetX"
-			],
-			[
-				"per",
-				"percentageFill"
-			],
-			[
-				"ye",
-				"yellowTri"
-			],
-			[
-				"blu",
-				"blueTri"
-			],
-			[
-				"cy",
-				"cyanTri"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 11002,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/page-style.css",
+			"settings":
+			{
+				"buffer_size": 887,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/project-theme.css",
+			"settings":
+			{
+				"buffer_size": 3048,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "mini/edit-cells.html",
+			"settings":
+			{
+				"buffer_size": 6221,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -636,6 +668,20 @@
 	},
 	"file_history":
 	[
+		"/Applications/MAMP/htdocs/ca-cave-gen/mini/moore-neighborhood.html",
+		"/Applications/MAMP/htdocs/ca-cave-gen/js/ca-cave.js",
+		"/Applications/MAMP/htdocs/ca-cave-gen/mini/change-rules.html",
+		"/Applications/MAMP/htdocs/ca-cave-gen/mini/edit-cells.html",
+		"/Applications/MAMP/htdocs/ca-cave-gen/css/mini-style.css",
+		"/Applications/MAMP/htdocs/ca-cave-gen/mini/my-moore-neighborhood2.html",
+		"/Applications/MAMP/htdocs/ca-cave-gen/mini/draw-cave.html",
+		"/Applications/MAMP/htdocs/ca-cave-gen/mini/random-walls4.html",
+		"/Applications/MAMP/htdocs/ca-cave-gen/minis/everything.html",
+		"/Applications/MAMP/htdocs/ca-cave-gen/mini/random-walls.html",
+		"/Applications/MAMP/htdocs/ca-cave-gen/js/util.js",
+		"/Applications/MAMP/htdocs/ca-cave-gen/notes.txt",
+		"/Applications/MAMP/htdocs/ca-cave-gen/css/project-theme.css",
+		"/Applications/MAMP/htdocs/ca-cave-gen/css/page-style.css",
 		"/Applications/MAMP/htdocs/parallel-coordinates/minis/y-equals-3x.html",
 		"/Applications/MAMP/htdocs/parallel-coordinates/minis/y-equals-3x-different-scales.html",
 		"/Applications/MAMP/htdocs/parallel-coordinates/minis/y-equals-x2.html",
@@ -749,21 +795,7 @@
 		"/Applications/MAMP/htdocs/Oak Trees/bouncing-off-curves-1/Vec2.js",
 		"/Applications/MAMP/htdocs/Oak Trees/polar-paths-8-centers-of-paths/Vec2.js",
 		"/Applications/MAMP/htdocs/Oak Trees/polar-paths-8-centers-of-paths/index.html",
-		"/Applications/MAMP/htdocs/Oak Trees/polar-paths-7/index.html",
-		"/Applications/MAMP/htdocs/Oak Trees/polar-paths-6/index.html",
-		"/Applications/MAMP/htdocs/Oak Trees/polar-paths/index.html",
-		"/Applications/MAMP/htdocs/Oak Trees/polar-paths-5/index.html",
-		"/Applications/MAMP/htdocs/Oak Trees/polar-paths-4/index.html",
-		"/Applications/MAMP/htdocs/Oak Trees/polar-paths-2/index.html",
-		"/Applications/MAMP/htdocs/Oak Trees/circle-with-bars-along-circumference-3/HelperFunctions.js",
-		"/Applications/MAMP/htdocs/Oak Trees/circle-with-bars-along-circumference-3/index.html",
-		"/Applications/MAMP/htdocs/Oak Trees/circle-with-bars-along-circumference-2/index.html",
-		"/Applications/MAMP/htdocs/Oak Trees/the-reflective-circle-comet-tail-rotation-4/Particle.js",
-		"/Applications/MAMP/htdocs/Oak Trees/the-reflective-circle-comet-tail-rotation-4/HelperFunctions.js",
-		"/Applications/MAMP/htdocs/Oak Trees/the-reflective-circle-comet-tail-rotation-4/Emitter.js",
-		"/Applications/MAMP/htdocs/Oak Trees/the-reflective-circle-comet-tail-rotation-4/index.html",
-		"/Applications/MAMP/htdocs/Oak Trees/the-reflective-circle-comet-tail-rotation-3/Particle.js",
-		"/Applications/MAMP/htdocs/Oak Trees/the-reflective-circle-comet-tail-rotation-3/index.html"
+		"/Applications/MAMP/htdocs/Oak Trees/polar-paths-7/index.html"
 	],
 	"find":
 	{
@@ -781,6 +813,63 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"inputfile",
+			"\"svg\"",
+			"randomizeWalls",
+			"\"canvas\"",
+			"canvas",
+			"tooltip",
+			"slide-controls",
+			"tooltip",
+			"slider",
+			"svg",
+			"randomizeCells",
+			"_randomizeCells",
+			"prevState",
+			"allcells",
+			"25",
+			"update",
+			"_randomizeWalls",
+			"global",
+			"margin",
+			"loc",
+			"p",
+			"font",
+			"button",
+			"5px",
+			"circle",
+			"numberOfColumns",
+			"numberOfRows",
+			"getValidNeighbors",
+			"ruleButton",
+			"div",
+			"col",
+			"row",
+			"cell",
+			"rowExtent",
+			"colExtent",
+			"xscale",
+			"getValidNeighbors",
+			"wallsum",
+			"attr",
+			"ruleset",
+			"numberOfColumns",
+			"numberOfRows",
+			"cell.state",
+			"colExtent",
+			"r",
+			"context",
+			"randomizeSeeds",
+			"mysum",
+			"aliveRule",
+			"aliveButtons",
+			"cellState",
+			"mysum",
+			"cellState",
+			"d",
+			"ncols",
+			"nrows",
+			"cellMatrix",
 			"ff9900",
 			"2",
 			"ff0099",
@@ -851,64 +940,7 @@
 			"r",
 			"left",
 			"10",
-			"this.currentState",
-			"true",
-			"bind",
-			"me",
-			"this",
-			"ad",
-			"window",
-			"l",
-			"Lis",
-			"Listen",
-			"true",
-			"height",
-			"draw",
-			"player.pos()",
-			"x",
-			"moveRight",
-			"moveLeft",
-			"true",
-			"x1",
-			"radius",
-			"p",
-			"pos",
-			"100",
-			"25",
-			"20",
-			"name:",
-			"name",
-			"30",
-			"31",
-			"name:",
-			"20",
-			"50",
-			"80",
-			"90",
-			"10",
-			"audioElement",
-			"var",
-			".print();",
-			"console.log",
-			"acceleration",
-			"position",
-			"ed)",
-			"if (",
-			"width",
-			"customization",
-			"pg",
-			"pos",
-			"a/2",
-			"a",
-			"d",
-			"sierpinski",
-			"koch",
-			"F",
-			"lsys",
-			"moveAmount",
-			"axiom",
-			"= arguments",
-			"= arguments[0]"
+			"this.currentState"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -930,8 +962,477 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 11002,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1790,
+								1790
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4342.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "css/page-style.css",
+					"settings":
+					{
+						"buffer_size": 887,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "css/project-theme.css",
+					"settings":
+					{
+						"buffer_size": 3048,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2631,
+								2631
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2634.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "mini/edit-cells.html",
+					"settings":
+					{
+						"buffer_size": 6221,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								426,
+								426
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
